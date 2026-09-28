@@ -8,11 +8,7 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'sonarcloud-token', variable: 'SONAR_TOKEN')]) {
           sh '''
-            mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:5.8.0.7211:sonar \
-              -Dsonar.host.url=https://sonarcloud.io \
-              -Dsonar.organization=dso_buggy_app \
-              -Dsonar.projectKey=dso_buggy_app \
-              -Dsonar.token=$SONAR_TOKEN
+            mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:5.8.0.7211:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=dso_buggy_app -Dsonar.projectKey=dso_buggy_app -Dsonar.token=$SONAR_TOKEN
           '''
         }
       }
